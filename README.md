@@ -2,14 +2,14 @@
 
 ## Prerequisites/Setup
 1. A laptop running Kali Linux 2020.4 as our attack node
-2. A NIC comprising an Atheros based chipset, with support for monitor mode, packet
+2. A Network Interface Card (NIC) comprising an Atheros based chipset, with support for monitor mode, packet
 injection and 802.11ac protocol
 3. A second NIC with support for monitor mode
-4. An AP and a client with support for 802.11ax and WPA3-SAE Wi-Fi security
+4. An Access Point (AP) and a client with support for 802.11ax and WPA3-SAE Wi-Fi security
 
 ## Installing the relevant dependencies
 The drivers for most popular wireless adapters come pre-compiled with Kali Linux and there
-shouldn’t be a need to install them specifically.
+shouldn’t be a need to install them specifically. If one uses Ubuntu instead of Kali, they may need to install additional drivers for the NICs to function properly. 
 Some of the attacks require the the wireless card to have the ability to acknowledge frames
 sent to spoofed MAC addresses. Currently this acknowledgement functionality is available
 only for Atheros based cards hence we need our NIC to be Atheros based. This ’ath masker’
