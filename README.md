@@ -1,5 +1,6 @@
 # WPA3-Attacks-IDS
 
+# Prerequisites/Setup
 • A laptop running Kali Linux 2020.4 as our attack node
 • A NIC comprising an Atheros based chipset, with support for monitor mode, packet
 injection and 802.11ac protocol
