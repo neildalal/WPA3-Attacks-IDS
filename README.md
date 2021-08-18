@@ -15,10 +15,10 @@ injection and 802.11ac protocol (We use the Alfa AWUS036NHA based on Atheros AR9
 The drivers for most popular wireless adapters come pre-compiled with Kali Linux and there
 shouldn’t be a need to install them specifically. If one uses Ubuntu instead of Kali, they may need to install additional drivers for the NICs as required for proper functioning. 
 Some of the attacks require our wireless card to have the ability to acknowledge frames
-sent to spoofed MAC addresses. Currently this acknowledgement functionality is available
-only for Atheros based cards hence we need our NIC to be Atheros based. This ’ath masker’
-kernel module can be enabled by cloning the git repository in [4] and then simply running
+sent to spoofed MAC addresses. For this we use the `ath_masker`
+kernel module by Vanhoefm, available at https://github.com/vanhoefm/ath_masker. Simply clone the git repository and then run
 ./load.sh in that folder from the terminal.
+
 
 We need to install some necessary packages which can be done by running the below mentioned commands:
 ```
