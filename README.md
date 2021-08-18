@@ -1,16 +1,20 @@
 # WPA3-Attacks-IDS
 
-## Prerequisites/Setup
+This work is a part of the paper titled "A Wireless Intrusion Detection System for 802.11 WPA3 Networks".
+
+## Prerequisites
+
+### Hardware required
 1. A laptop running Kali Linux 2020.4 as our attack node
 2. A Network Interface Card (NIC) comprising an Atheros based chipset, with support for monitor mode, packet
-injection and 802.11ac protocol
-3. A second NIC with support for monitor mode
+injection and 802.11ac protocol (We use the Alfa AWUS036NHA based on Atheros AR9271 Chipset)
+3. A second NIC with support for monitor mode (We use Leoxsys LEO-HG150N, a cheap NIC available in our country)
 4. An Access Point (AP) and a client with support for 802.11ax and WPA3-SAE Wi-Fi security
 
-## Installing the relevant dependencies
+### Installing the relevant dependencies
 The drivers for most popular wireless adapters come pre-compiled with Kali Linux and there
-shouldn’t be a need to install them specifically. If one uses Ubuntu instead of Kali, they may need to install additional drivers for the NICs to function properly. 
-Some of the attacks require the the wireless card to have the ability to acknowledge frames
+shouldn’t be a need to install them specifically. If one uses Ubuntu instead of Kali, they may need to install additional drivers for the NICs as required for proper functioning. 
+Some of the attacks require our wireless card to have the ability to acknowledge frames
 sent to spoofed MAC addresses. Currently this acknowledgement functionality is available
 only for Atheros based cards hence we need our NIC to be Atheros based. This ’ath masker’
 kernel module can be enabled by cloning the git repository in [4] and then simply running
@@ -25,7 +29,7 @@ $ apt install libssl-dev
 $ apt install libnl-genl-3-dev
 ```
 
-## Several useful commands
+### Several useful commands
 To disable Wi-Fi in your network manager run
 ```
 $ sudo airmon-ng check kill
@@ -49,7 +53,7 @@ and then run:
 ```
 $ airodump-ng wlan0
 ```
-## Installing and setting up Hostapd v2.9
+### Installing and setting up Hostapd v2.9
 Download and extract Hostapd v2.9 from https://w1.fi/releases/hostapd-2.9.tar.gz
 Next compile it by:
 ```
@@ -57,12 +61,11 @@ $ cd hostapd-2.9/hostapd
 $ cp defconfig .config
 $ make -j 2
 ```
-We can set our configuration for hostapd in a file. The below mentioned file, named
+We can set our configuration for hostapd in a .conf file . A file included in this repo, named
 ’wpa3.conf’ is an example of one such configuration.
 
 We can then finally run hostapd as follows,
-#First disable Wi-Fi in the network manager. Then put the Alfa NIC in monitor mode.
-#Refer Section 4.3 for how to do this. Then simply run:
+#First disable Wi-Fi in the network manager. Then put the Alfa NIC in monitor mode. Then simply run:
 ```
 $ ./hostapd wpa3.conf -dd -K
 ```
