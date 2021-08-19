@@ -51,7 +51,7 @@ such as the mac address of the access points(APs), the clients connected to it, 
 present in the network, the channels on which the APs are operating, the supported authentication mechanism of the APs, etc. To do this put the NIC, say wlan0, in monitor mode
 and then run:
 ```
-$ airodump-ng wlan0
+$ sudo airodump-ng wlan0
 ```
 ### Installing and setting up Hostapd v2.9
 Download and extract Hostapd v2.9 from https://w1.fi/releases/hostapd-2.9.tar.gz
