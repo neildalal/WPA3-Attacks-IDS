@@ -67,5 +67,5 @@ We can set our configuration for hostapd in a .conf file . A file included in th
 We can then finally run hostapd as follows,
 #First disable Wi-Fi in the network manager. Then put the Alfa NIC in monitor mode. Then simply run:
 ```
-$ ./hostapd wpa3.conf -dd -K
+$ sudo ./hostapd wpa3.conf -dd -K
 ```
