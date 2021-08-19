@@ -1,7 +1,7 @@
 We modify the source code of hostapd-2.9 in such a way that the attacker’s access point replies to the supplicant’s commit message with a commit reply that contains the rejection status code 0x0001 - “Unspecified failure”. For this we modify
 the code located in /hostapd-2.9/src/ap/ieee802_11.c. In particular, we make the function ’auth sae send commit’ return ’WLAN STATUS UNSPECIFIED FAILURE’ and also
-set the value of variable ’resp’ in the function ’handle auth fils’ to ’WLAN STATUS UNSPECIFIED FAILURE’. We provide this already modified ieee802_11.c file in this folder.
-After that, we recompile and run hostapd-2.9. While the attack
+set the value of variable ’resp’ in the function ’handle auth fils’ to ’WLAN STATUS UNSPECIFIED FAILURE’. This already modified ieee802_11.c file is already provided by us.
+After this, we recompile and run hostapd-2.9. While the attack
 is running, we found that every single time a client tries to initiate an authentication, it
 receives the rejection message from the attacker’s AP first and aborts the handshake, thus
 preventing new clients from joining.
