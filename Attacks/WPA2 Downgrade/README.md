@@ -15,17 +15,23 @@ wpa2.conf -dd -K”.
 We observe that when the attack is in operation, no new clients are able
 to join the network. Our clients would either get stuck on ”Obtaining IP Address” or get
 the error - ”Check Password and try Again”. As soon as the attack is stopped, all clients
-are able to successfully connect to the network. Figure 9 shows the packets captured during
-the attack which matches with the packet sequence we expect theoretically.
-
+are able to successfully connect to the network.
 
 1. Try to make a client use WPA2 instead of WPA3
 
 The file wpa3_only.pcapng
 
+Client aborts the handshake after receiving message 3 when it realizes that AP
+indeed supports WPA3 only. The Beacons of length 124 with BI = 16 are from the attacker
+node and beacons of length 351 and BI = 100 are from our own AP.
+
+packet no.
+
 2. Downgrade to WPA2 attack (when AP in transition mode)
 
 The file wpa3_transition_mode.pcapng 
+
+packet no.290 
 
 We just need to set our target AP to be running in transition/mixed mode.
 The effect of the attack in this case is that it causes all clients(even those supporting WPA3)
