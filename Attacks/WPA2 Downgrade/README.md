@@ -10,7 +10,9 @@ by setting the beacon interval in the configuration file to 16. This means our r
 send a beacon every 16ms as opposed to our legitimate AP doing so every 100ms. Lastly, we
 set the wpa key mgmt to WPA2 security. Table 2 shows the ’wpa2.conf’ file which we use to
 set everything as required. Then we simply launch the attack by running ”sudo ./hostapd
-wpa2.conf -dd -K”. We observe that when the attack is in operation, no new clients are able
+wpa2.conf -dd -K”. 
+
+We observe that when the attack is in operation, no new clients are able
 to join the network. Our clients would either get stuck on ”Obtaining IP Address” or get
 the error - ”Check Password and try Again”. As soon as the attack is stopped, all clients
 are able to successfully connect to the network. Figure 9 shows the packets captured during
@@ -19,11 +21,11 @@ the attack which matches with the packet sequence we expect theoretically.
 
 1. Try to make a client use WPA2 instead of WPA3
 
-The file wpa3_only.pacp
+The file wpa3_only.pcapng
 
 2. Downgrade to WPA2 attack (when AP in transition mode)
 
-The file wpa3_transition_mode.pcap 
+The file wpa3_transition_mode.pcapng 
 
 We just need to set our target AP to be running in transition/mixed mode.
 The effect of the attack in this case is that it causes all clients(even those supporting WPA3)
