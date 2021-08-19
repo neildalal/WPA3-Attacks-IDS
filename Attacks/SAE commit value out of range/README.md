@@ -1,9 +1,20 @@
-We want the attacker to behave as a rogue AP, sending modified beacons. For this we run hostapd on are attack node. We setup and configure hostapd-2.9 to run as an AP with the same SSID and MAC address as our target AP. We also set it to run on the same channel as the target AP. We increase the rate of beacons sent by our rogue AP by setting the beacon interval in the configuration file to 16. This means our rogue AP will send a beacon every 16ms as opposed to our legitimate AP doing so every 100ms. Lastly, we set the wpa key mgmt to WPA2 security. The file ’wpa2.conf’ is used to set everything as required.
+We modify the source code of hostapd-2.9 in such a way that the attacker’s access point replies to the supplicant’s commit message with a commit reply that contains the rejection status code 0x0001 - “Unspecified failure”. For this we modify
+the code located in /hostapd-2.9/src/ap/ieee802_11.c. In particular, we make the function ’auth sae send commit’ return ’WLAN STATUS UNSPECIFIED FAILURE’ and also
+set the value of variable ’resp’ in the function ’handle auth fils’ to ’WLAN STATUS UNSPECIFIED FAILURE’. We provide this already modified ieee802_11.c file in this folder.
+After that, we recompile and run hostapd-2.9. While the attack
+is running, we found that every single time a client tries to initiate an authentication, it
+receives the rejection message from the attacker’s AP first and aborts the handshake, thus
+preventing new clients from joining.
+We can keep the rate of beacon as low as possible and also set the SSID to be hidden. This
+will help keep the attack as passive as possible and difficult for an IDS to detect it. This
+can be achieved by setting ’ignore broadcast ssid=1’ and ’beacon int=9999’ in the .conf file
+of hostapd. We have already done this in the 'wpa3.conf' file.
 
-So to launch the attack, simply download and compile hostapd, then run hostapd with this configuration file as ”sudo ./hostapd wpa2.conf -dd -K”.
+Now to launch the attack, first download hostapd, then replace the ieee802_11.c file locted at /hostapd-2.9/src/ap/ieee802_11.c with the one we provide. Next compile hostapd using the commands mentioned in the `prerequisite` section of the readme.md file of the root folder of this repository.
+Then run hostapd with our wpa3.conf configuration file as ”sudo ./hostapd wpa3.conf -dd -K”.
 
 We observe that when the attack is in operation, no new clients are able to join the network. Our clients would either get stuck on ”Obtaining IP Address” or get the error - ”Check Password and try Again”. As soon as the attack is stopped, all clients are able to successfully connect to the network.
 
-The file wpa3_only.pcapng is captured when the attack is ran with our target AP security set to WPA3 only. The file wpa3_transition_mode.pcapng is captured when the attack is ran with our target AP set in transition mode (supporting both WPA3 and WPA2)
-
-In the file wpa3_transition_mode.pcapng, observe the sequence of packets from No. 290 to 297. We see that the client aborts the handshake after receiving message 3 of the EAPOL handshake when it realizes that there is a mismatch in the RSNE information which it possesses vs what our AP possesses. The Beacons of length 124 with beacon interval (BI) = 16 are from the attacker node and beacons of length 351 with BI = 100 are from our own AP.
+The file commit.pcapng is captured when the attack is ran against our target AP and we try to connect a client to the network.
+We can see that packet no. 19965 is the ’Unspecified failure’ rejection message sent by the attacker in reply to the authentication request sent in packet no. 19963.
+Client aborts the handshake on receiving this and doesn’t reply to the successful reply sent by the AP (Packet 19970) later.
