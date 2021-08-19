@@ -2,7 +2,7 @@
 
 This work is a part of the paper titled "A Wireless Intrusion Detection System for 802.11 WPA3 Networks".
 
-## Prerequisites
+## Prerequisites (for perfoming the Attacks)
 
 ### Hardware required
 1. A laptop running Kali Linux 2020.4 as our attack node
