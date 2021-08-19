@@ -1,6 +1,10 @@
 # WPA3-Attacks-IDS
 
 This work is a part of the paper titled "A Wireless Intrusion Detection System for 802.11 WPA3 Networks".
+The Attacks folder provides the files necessary to launch the various attacks specific to a WPA3 network, as discussed in our paper.
+The IDS folder provides the code and instructions to run the signature-based IDS that we have designed.
+
+Below we mention the prerequisites required to launch the various attacks. To run the IDS alone, we do not need all these prerequisites and one can skip it in that case.
 
 ## Prerequisites (for perfoming the Attacks)
 
