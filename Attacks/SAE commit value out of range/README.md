@@ -17,4 +17,5 @@ We observe that when the attack is in operation, no new clients are able to join
 
 The file commit.pcapng is captured when the attack is ran against our target AP and we try to connect a client to the network.
 We can see that packet no. 19965 is the ’Unspecified failure’ rejection message sent by the attacker in reply to the authentication request sent in packet no. 19963.
-Client aborts the handshake on receiving this and doesn’t reply to the successful reply sent by the AP (Packet 19970) later.
+Client aborts the handshake on receiving this and doesn’t reply to the successful reply sent by the AP (Packet 19970) later. This sequence of packets captured during the attack matches with the packet sequence we expect
+theoretically.
