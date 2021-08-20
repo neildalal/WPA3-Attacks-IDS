@@ -4,7 +4,8 @@ After changing these appropriate fields, simply run the python code in terminal 
 python IDS_wPA3.py
 ```
 
-Note: 1) To be able to run this python file, some packages may need to be installed. For example, `tshark` is needed to read the .pcap file and extract certain fields out to a .csv file.
+Note: 
+1) To be able to run this python file, some packages may need to be installed. For example, `tshark` is needed to read the .pcap file and extract certain fields out to a .csv file.
 2) Currently the inputs that the IDS takes are coded in the python file itself, but it can be easily edited to take inputs from the terminal interactively rather than changing the inputs from code at line 7,8 and 47.
 3) Also currently, the IDS takes only one .pcap file as input, but it can be easily edited to keep taking several .pcap files as input one after the other and maintaing its state in between.
 
