@@ -8,4 +8,5 @@ Note: To be able to run this python file, some packages may needed to be install
 
 If there is any attack detected in some part of the packet capture file, the IDS prints the type of attack and the time of its execution. For example, the below screenshot is the result of giving the commit.pcapng file as input the the IDS.
 
-![image](https://user-images.githubusercontent.com/44478153/130196899-6fbdc63d-82e5-4f9e-bb90-4c57df562e90.png)
+
+![image](https://user-images.githubusercontent.com/44478153/130197090-493e7095-f88d-49c0-a84d-c428859a4967.png)
