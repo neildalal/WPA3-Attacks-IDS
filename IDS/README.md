@@ -1,4 +1,4 @@
-Our IDS code IDS_WPA3.py takes 3 inputs - the packet capture file, the BSSID (MAC Address) of our target AP and the SSID set for our target AP. These are set in the code at line 47, line 7 and line 8 respectively.
+Our IDS code IDS_WPA3.py takes 3 inputs - the BSSID (MAC Address) of our target AP, the SSID set for our target AP and the packet capture file in which we want to detect attacks. These are set in the code at line 7, line 8 and line 47 respectively.
 After changing these appropriate fields, simply run the python code in terminal as
 ```
 python IDS_wPA3.py
